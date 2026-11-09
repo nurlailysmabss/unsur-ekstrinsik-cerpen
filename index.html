@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuis dan LKPD Unsur Ekstrinsik Cerpen</title>
+<style>
+:root{--bg:#F4F5F8;--surface:#FFFFFF;--ink:#1D2540;--muted:#555E78;--line:#C8CDDB;--good:#17695F;--good-soft:#DAF0EC;--bad:#A83A2A;--bad-soft:#FAE3DE;--brand:#2B3A6B;--on-brand:#FFFFFF;--focus:#E0A526;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12162A;--surface:#1B213B;--ink:#E8EBF5;--muted:#A5ADC5;--line:#343C5C;--good:#5CC9B8;--good-soft:#16352F;--bad:#FF9482;--bad-soft:#3E2019;--brand:#8EA2F0;--on-brand:#12162A}}
+:root[data-theme="dark"]{--bg:#12162A;--surface:#1B213B;--ink:#E8EBF5;--muted:#A5ADC5;--line:#343C5C;--good:#5CC9B8;--good-soft:#16352F;--bad:#FF9482;--bad-soft:#3E2019;--brand:#8EA2F0;--on-brand:#12162A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:20px;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:20px 18px 40px}
+header{border-left:6px solid var(--brand);padding-left:12px;margin-bottom:20px}
+h1{font-size:1.4rem;margin:0;line-height:1.25}
+h2{font-size:1.35rem;line-height:1.35;margin:18px 0}
+h3{font-size:1.2rem;margin:0 0 6px}
+p{margin:0 0 12px}
+.muted{color:var(--muted);font-size:1rem;margin:4px 0 0}
+.story{font-family:Georgia,"Iowan Old Style",Palatino,serif;font-size:1.15rem;line-height:1.75;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 18px}
+.story h2{margin-top:0}
+.story p{margin:0 0 14px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+#fill{height:100%;width:0;background:var(--brand);transition:width .3s}
+.opt{display:flex;gap:14px;align-items:flex-start;width:100%;min-height:64px;margin:0 0 12px;padding:14px 16px;text-align:left;font:inherit;font-size:1.08rem;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:14px;cursor:pointer}
+.opt .let{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--line);color:var(--ink)}
+.opt .tag{display:block;margin-top:4px;font-size:.95rem;font-weight:700}
+.opt .tag:empty{display:none}
+.opt.good{border-color:var(--good);background:var(--good-soft)}
+.opt.good .tag{color:var(--good)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .tag{color:var(--bad)}
+.opt.locked{cursor:default}
+.fb{margin-top:8px;padding:16px 18px;border-radius:14px;border-left:6px solid}
+.fb p:last-child{margin-bottom:0}
+.fb.good{background:var(--good-soft);border-color:var(--good)}
+.fb.bad{background:var(--bad-soft);border-color:var(--bad)}
+.btn{display:block;width:100%;min-height:60px;margin-top:16px;padding:12px 16px;font:inherit;font-size:1.15rem;font-weight:700;color:var(--on-brand);background:var(--brand);border:0;border-radius:14px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.score{font-size:3.5rem;font-weight:800;color:var(--brand);line-height:1.1;margin:8px 0}
+ul{padding-left:1.3em;margin:0 0 12px}
+li{margin-bottom:6px}
+label{display:block;font-weight:600;margin:16px 0 6px}
+input,select,textarea{width:100%;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:12px}
+textarea{resize:vertical}
+.hint{color:var(--muted);font-size:1rem;margin:0 0 6px}
+@media (prefers-reduced-motion:reduce){#fill{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header><h1>Unsur Ekstrinsik Cerpen</h1><p class="muted" id="step"></p></header>
+
+<section id="start">
+<p>Paket ini punya tiga langkah dan memakan waktu sekitar 30 menit: baca cerpen, kerjakan kuis diagnostik, lalu isi LKPD di layar.</p>
+<p>Cerpennya berlatar bangunan bersejarah di Kota Malang. Kamu sudah paham unsur intrinsik. Sekarang kita belajar menemukan unsur ekstrinsik, terutama nilai budaya dan nilai politik.</p>
+<button class="btn" id="go" type="button">Mulai membaca</button>
+</section>
+
+<section id="story" hidden>
+<article class="story">
+<h2>Peluit di Ruang Tunggu</h2>
+<p>Sabtu pagi, Laras duduk di bangku kayu ruang tunggu Stasiun Kota Baru. Tembok tebal dan jendela tingginya masih sama seperti di foto lama milik Kakek Darmo, mantan petugas stasiun itu.</p>
+<p>“Bangunan ini berdiri sejak masa penjajahan, Ras,” kata Kakek. “Dulu orang kecil seperti kakekmu hanya boleh duduk di gerbong paling murah.” Laras menatap bangku itu dan membayangkan betapa banyak orang yang pernah menunggu di sana.</p>
+<p>Di luar, warga sudah ramai. Setiap Minggu mereka bergotong royong menyapu peron dan mengecat pagar. Ibu-ibu membawa singkong goreng dan teh hangat untuk dinikmati bersama. “Kera Ngalam harus kompak!” seru seorang pemuda, disambut tawa.</p>
+<p>Namun pagi itu ada kabar buruk. Surat dari kantor pemerintah menyebutkan ruang tunggu lama akan dibongkar untuk lahan parkir. “Katanya demi kemajuan,” gumam Kakek. “Tapi kemajuan apa yang membuang ingatan?”</p>
+<p>Warga tidak marah-marah. Mereka meminta pertemuan. Di balai kelurahan, semua duduk melingkar: kakek-kakek, pedagang, pelajar, dan petugas pemerintah. Laras memberanikan diri menunjukkan foto lama dan kisah Kakek. Petugas itu mencatat dengan serius.</p>
+<p>Dua minggu kemudian, keputusan datang. Ruang tunggu dipertahankan dan diperbaiki, sebagian dijadikan pojok sejarah. Lahan parkir dipindah ke sisi barat. Hari itu Kakek meniup peluit tuanya sekali, pelan, seperti memberi salam kepada masa lalu. Laras tersenyum. Ia sadar, menjaga bangunan tua berarti menjaga cerita orang-orang yang pernah singgah di dalamnya.</p>
+</article>
+<button class="btn" id="toquiz" type="button">Saya sudah membaca, mulai kuis</button>
+</section>
+
+<section id="quiz" hidden>
+<p class="muted" id="count"></p>
+<div class="bar"><div id="fill"></div></div>
+<h2 id="q"></h2>
+<div id="opts"></div>
+<div id="fb" aria-live="polite" hidden></div>
+<button class="btn" id="next" type="button" hidden></button>
+</section>
+
+<section id="qdone" hidden>
+<p class="muted">Skor kuis kamu</p>
+<div class="score" id="score"></div>
+<p id="msg"></p>
+<div id="review" hidden><h3>Yang perlu kamu perhatikan di LKPD</h3><ul id="tags"></ul></div>
+<button class="btn" id="tolkpd" type="button">Lanjut ke LKPD</button>
+<button class="btn alt" id="again" type="button">Ulangi kuis</button>
+</section>
+
+<section id="lkpd" hidden>
+<div id="form"></div>
+<button class="btn" id="make" type="button">Susun jawabanku</button>
+</section>
+
+<section id="final" hidden>
+<p>Jawabanmu sudah tersusun. Salin teks di bawah, lalu kirim kepada gurumu dengan cara yang diminta di kelas.</p>
+<textarea id="out" rows="14" readonly aria-label="Jawaban LKPD"></textarea>
+<button class="btn" id="copy" type="button">Salin jawaban</button>
+<p class="hint" id="cmsg" aria-live="polite"></p>
+<button class="btn alt" id="back" type="button">Kembali mengubah jawaban</button>
+</section>
+</main>
+
+<script>
+var Q=[
+{q:"Unsur ekstrinsik cerpen adalah…",
+o:[["Tokoh, alur, dan latar yang membangun cerita di dalam teks","Itu unsur intrinsik. Unsur ekstrinsik berada di luar teks.","Unsur intrinsik dan ekstrinsik tertukar"],
+["Gaya bahasa pengarang yang membuat cerita menarik","Gaya bahasa termasuk unsur intrinsik karena ada di dalam teks.","Gaya bahasa dianggap unsur ekstrinsik"],
+["Hal di luar teks yang memengaruhi isi cerita, seperti latar belakang pengarang, nilai, dan kondisi masyarakat"],
+["Ringkasan isi cerita dari awal sampai akhir","Ringkasan hanya mengulang isi cerita, bukan unsur yang membangunnya dari luar.","Unsur ekstrinsik dianggap ringkasan cerita"]],
+k:2,ok:"Unsur ekstrinsik ada di luar teks, tetapi memengaruhi cerita. Nilai budaya dan nilai politik termasuk di dalamnya."},
+{q:"Warga menyapu peron dan mengecat pagar stasiun bersama setiap Minggu, lalu menikmati teh dan singkong goreng bersama. Nilai apa yang paling tepat?",
+o:[["Nilai budaya: kebiasaan bergotong royong dan kebersamaan warga"],
+["Nilai politik: warga sedang berkampanye memilih pemimpin","Tidak ada kampanye dalam adegan ini. Nilai politik berkaitan dengan cara warga dan pemerintah mengatur kehidupan bersama.","Politik dianggap hanya kampanye"],
+["Nilai ekonomi: warga mencari keuntungan dari stasiun","Teks tidak menyebut keuntungan. Nilai harus dibuktikan dengan kutipan, bukan ditebak.","Nilai ditebak tanpa bukti dalam teks"],
+["Bukan nilai apa pun karena hanya kegiatan sehari-hari","Kebiasaan sehari-hari justru sering menunjukkan nilai budaya suatu masyarakat.","Kegiatan sehari-hari dianggap tidak bernilai"]],
+k:0,ok:"Gotong royong dan makan bersama adalah kebiasaan yang mencerminkan nilai budaya masyarakat."},
+{q:"Pemerintah berencana membongkar ruang tunggu, lalu warga meminta pertemuan dan duduk bersama di balai kelurahan. Bagian ini menunjukkan nilai politik berupa…",
+o:[["Pengarang mendukung partai tertentu","Teks tidak menyebut partai. Nilai politik tidak sama dengan dukungan partai.","Nilai politik dianggap dukungan partai"],
+["Warga membenci semua keputusan pemerintah","Warga justru tidak marah-marah dan memilih berunding.","Menyampaikan keberatan dianggap kebencian"],
+["Tokoh Kakek ingin menjadi pejabat","Teks tidak menyebut hal itu. Politik tidak hanya soal jabatan.","Politik dianggap soal jabatan"],
+["Hubungan warga dan pemerintah dalam mengambil keputusan lewat musyawarah"]],
+k:3,ok:"Warga dan petugas pemerintah berunding bersama sebelum keputusan diambil. Itulah nilai politik dalam cerpen ini."},
+{q:"Cara paling tepat membuktikan adanya nilai budaya dalam cerpen adalah…",
+o:[["Menebak dari judul cerpen","Judul belum cukup. Bukti harus berasal dari isi cerita.","Judul dianggap cukup sebagai bukti"],
+["Menunjuk kutipan (kebiasaan, bahasa, atau sikap tokoh), lalu menjelaskan nilai di baliknya"],
+["Menyebut nama kota tempat cerita terjadi","Nama tempat adalah latar. Latar belum tentu menunjukkan nilai budaya.","Latar tempat dianggap sama dengan nilai budaya"],
+["Menuliskan pendapat sendiri tanpa kutipan","Pendapat tanpa bukti sulit dipercaya. Selalu sertakan kutipan.","Pendapat dianggap cukup tanpa bukti"]],
+k:1,ok:"Analisis yang kuat selalu punya dua bagian: kutipan sebagai bukti dan penjelasan nilainya."},
+{q:"Seorang pemuda berseru, “Kera Ngalam harus kompak!” Ungkapan itu menunjukkan…",
+o:[["Nilai budaya: bahasa khas Malang yang mencerminkan identitas masyarakatnya"],
+["Kesalahan penulisan yang harus diperbaiki","Ini bahasa daerah yang sengaja dipakai, bukan kesalahan.","Bahasa daerah dianggap salah"],
+["Nilai politik: ajakan memilih calon tertentu","Tidak ada ajakan memilih. Ini seruan kebersamaan antarwarga.","Setiap ajakan dianggap politik"],
+["Unsur intrinsik saja, jadi tidak mengandung nilai budaya","Kalimat dalam teks adalah unsur intrinsik, tetapi bisa sekaligus memperlihatkan nilai budaya dari luar teks.","Unsur intrinsik dan ekstrinsik dianggap tidak berkaitan"]],
+k:0,ok:"Ungkapan itu memakai bahasa khas Malang dan menunjukkan rasa kebersamaan serta identitas warganya."}
+];
+var F=[
+{id:"nama",l:"Nama dan kelas",t:"i"},
+{h:"Tugas 1. Temukan nilai dalam cerpen"},
+{id:"kb",l:"Nilai budaya: tulis satu kutipan dari cerpen sebagai bukti",t:"a",r:2},
+{id:"pb",l:"Jelaskan nilai budaya pada kutipan itu",t:"a",r:3},
+{id:"kp",l:"Nilai politik: tulis satu kutipan dari cerpen sebagai bukti",t:"a",r:2},
+{id:"pp",l:"Jelaskan nilai politik pada kutipan itu",t:"a",r:3},
+{h:"Tugas 2. Sajikan cerpenmu sendiri"},
+{id:"obj",l:"Bangunan bersejarah atau objek di sekitar tempat tinggalmu yang menjadi latar",t:"i"},
+{id:"tuj",l:"Tujuan komunikatif tulisanmu",t:"s",o:["Menghibur pembaca","Menyampaikan pesan atau nasihat","Mengenalkan budaya atau sejarah setempat"]},
+{id:"nil",l:"Nilai yang kamu sisipkan",t:"s",o:["Nilai budaya","Nilai politik"]},
+{id:"par",l:"Tulis paragraf pembuka cerpenmu (4 sampai 6 kalimat)",t:"a",r:7,hint:"Periksa: ada latar bangunan atau objek, ada tokoh, dan nilai terlihat dari sikap atau kebiasaan tokoh."},
+{h:"Tugas 3. Refleksi"},
+{id:"ref",l:"Satu hal baru yang kamu pahami tentang unsur ekstrinsik hari ini",t:"a",r:3}
+];
+var L="ABCD",i=0,score=0,tags=[],locked=false;
+var NAMES={start:"",story:"Langkah 1 dari 3: baca cerpen (sekitar 5 menit)",quiz:"Langkah 2 dari 3: kuis diagnostik (sekitar 10 menit)",qdone:"Langkah 2 dari 3: hasil kuis",lkpd:"Langkah 3 dari 3: LKPD (sekitar 15 menit)","final":"Selesai"};
+function $(id){return document.getElementById(id)}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function go(id){Object.keys(NAMES).forEach(function(s){$(s).hidden=s!==id});$("step").textContent=NAMES[id];window.scrollTo(0,0)}
+function load(){
+var q=Q[i],o=$("opts");
+$("count").textContent="Soal "+(i+1)+" dari "+Q.length;
+$("fill").style.width=(i/Q.length*100)+"%";
+$("q").textContent=q.q;
+$("fb").hidden=true;$("fb").textContent="";$("next").hidden=true;o.textContent="";
+q.o.forEach(function(op,n){
+var b=el("button","opt");b.type="button";
+b.appendChild(el("span","let",L[n]));
+var body=el("span","body");
+body.appendChild(el("span","txt",op[0]));
+body.appendChild(el("span","tag"));
+b.appendChild(body);
+b.onclick=function(){pick(n)};
+o.appendChild(b);
+});
+}
+function mark(b,cls,label){b.classList.add(cls);b.querySelector(".tag").textContent=label}
+function pick(n){
+if(locked)return;locked=true;
+var q=Q[i],bs=$("opts").children,right=n===q.k;
+for(var m=0;m<bs.length;m++)bs[m].classList.add("locked");
+mark(bs[n],right?"good":"bad",right?"Benar":"Salah");
+if(right){score++}else{mark(bs[q.k],"good","Jawaban tepat");tags.push(q.o[n][2])}
+var fb=$("fb");fb.textContent="";fb.className="fb "+(right?"good":"bad");
+fb.appendChild(el("h3",null,right?"Benar!":"Belum tepat."));
+if(!right)fb.appendChild(el("p",null,q.o[n][1]));
+fb.appendChild(el("p",null,(right?"":"Jawaban yang benar adalah "+L[q.k]+". ")+q.ok));
+fb.hidden=false;
+var nx=$("next");nx.textContent=i<Q.length-1?"Soal berikutnya":"Lihat skor";nx.hidden=false;
+nx.focus({preventScroll:true});nx.scrollIntoView({block:"nearest"});
+}
+function finishQuiz(){
+$("score").textContent=score+" dari "+Q.length;
+$("msg").textContent=score===Q.length?"Luar biasa. Kamu sudah paham cara menemukan nilai budaya dan nilai politik.":score>=3?"Sudah bagus. Perhatikan penjelasan pada soal yang salah saat mengisi LKPD.":"Tidak apa-apa. Kuis ini membantu kita tahu bagian yang perlu dipelajari lagi. Kerjakan LKPD dengan teliti.";
+var u=tags.filter(function(t,n){return tags.indexOf(t)===n}),ul=$("tags");
+ul.textContent="";u.forEach(function(t){ul.appendChild(el("li",null,t))});
+$("review").hidden=u.length===0;
+go("qdone");
+}
+function buildForm(){
+var f=$("form");if(f.firstChild)return;
+F.forEach(function(x){
+if(x.h){f.appendChild(el("h2",null,x.h));return}
+var lb=el("label",null,x.l);lb.setAttribute("for",x.id);f.appendChild(lb);
+if(x.hint)f.appendChild(el("p","hint",x.hint));
+var c;
+if(x.t==="a"){c=el("textarea");c.rows=x.r}
+else if(x.t==="s"){c=el("select");x.o.forEach(function(v){var op=el("option",null,v);op.value=v;c.appendChild(op)})}
+else{c=el("input");c.type="text"}
+c.id=x.id;f.appendChild(c);
+});
+}
+function compile(){
+var t="Skor kuis: "+score+" dari "+Q.length+"\n";
+F.forEach(function(x){
+if(x.h){t+="\n"+x.h+"\n";return}
+t+="\n"+x.l+":\n"+($(x.id).value.trim()||"(belum diisi)")+"\n";
+});
+$("out").value=t;
+}
+$("go").onclick=function(){go("story")};
+$("toquiz").onclick=function(){i=0;score=0;tags=[];locked=false;go("quiz");load()};
+$("next").onclick=function(){i++;if(i<Q.length){locked=false;load();window.scrollTo(0,0)}else{finishQuiz()}};
+$("again").onclick=function(){i=0;score=0;tags=[];locked=false;go("quiz");load()};
+$("tolkpd").onclick=function(){buildForm();go("lkpd")};
+$("make").onclick=function(){compile();go("final")};
+$("back").onclick=function(){go("lkpd")};
+$("copy").onclick=function(){
+var t=$("out");t.focus();t.select();var ok=false;
+try{ok=document.execCommand("copy")}catch(e){}
+$("cmsg").textContent=ok?"Jawaban tersalin. Tempelkan dan kirim kepada gurumu.":"Teks sudah terpilih. Tahan layar lalu pilih Salin.";
+};
+</script>
+</body>
+</html>
